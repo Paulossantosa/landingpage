@@ -6,15 +6,29 @@
   <title>Produto X - Transforme sua rotina</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
+
 <body class="bg-gray-950 text-white font-sans">
   <!-- HERO -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-gray-900 to-black">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Descubra o <span class="text-indigo-500">Produto X</span></h1>
-    <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mb-8">A solução definitiva para elevar sua produtividade e transformar sua rotina com inovação e simplicidade.</p>
-    <a href="#oferta" class="bg-indigo-600 hover:bg-indigo-700 text-lg px-8 py-4 rounded-full font-semibold transition-all shadow-lg hover:scale-105">Quero Experimentar</a>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+      Descubra o <span class="text-indigo-500">Produto X</span>
+    </h1>
+    <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mb-8">
+      A solução definitiva para elevar sua produtividade e transformar sua rotina com inovação e simplicidade.
+    </p>
+    <a href="#oferta"
+      class="bg-indigo-600 hover:bg-indigo-700 text-lg px-8 py-4 rounded-full font-semibold transition-all shadow-lg hover:scale-105">
+      Quero Experimentar
+    </a>
     <div class="mt-12">
-      <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+      <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
     </div>
   </section>
 
@@ -63,24 +77,58 @@
   <section class="py-20 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl md:text-5xl font-bold mb-6">Receba novidades e ofertas exclusivas</h2>
     <p class="text-lg text-gray-400 mb-8">Cadastre seu e-mail ou WhatsApp e faça parte da nossa comunidade.</p>
-    <form action="#" method="POST" class="max-w-xl mx-auto flex flex-col md:flex-row gap-4">
-      <input type="text" placeholder="Seu nome" class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
-      <input type="email" placeholder="Seu e-mail" class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
-      <input type="tel" placeholder="WhatsApp (opcional)" class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
-      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-lg font-bold transition-all">Cadastrar</button>
+    
+    <form id="leadForm" class="max-w-xl mx-auto flex flex-col md:flex-row gap-4">
+      <input type="text" id="nome" placeholder="Seu nome" required
+        class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
+      <input type="email" id="email" placeholder="Seu e-mail" required
+        class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
+      <input type="tel" id="whatsapp" placeholder="WhatsApp (opcional)"
+        class="flex-1 px-4 py-3 rounded-lg text-black focus:outline-none">
+      <button type="submit"
+        class="bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-lg font-bold transition-all">Cadastrar</button>
     </form>
+
+    <p id="msgSucesso" class="text-green-400 font-semibold mt-4 hidden">
+      ✅ Cadastro realizado com sucesso! Entraremos em contato em breve.
+    </p>
   </section>
 
   <!-- OFERTA FINAL -->
   <section id="oferta" class="py-20 px-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-center">
     <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Pronto para transformar sua vida?</h2>
     <p class="text-lg md:text-2xl mb-8">Experimente agora com 30 dias grátis e veja os resultados por conta própria.</p>
-    <a href="#" class="bg-black text-white text-lg px-10 py-5 rounded-full font-bold shadow-lg hover:scale-110 transition-all">Começar Agora</a>
+    <button id="btnComecar" class="bg-black text-white text-lg px-10 py-5 rounded-full font-bold shadow-lg hover:scale-110 transition-all">
+      Começar Agora
+    </button>
   </section>
 
   <!-- FOOTER -->
   <footer class="py-10 bg-gray-950 text-center text-gray-500 text-sm">
     © 2025 Produto X. Todos os direitos reservados.
   </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Formulário de leads funcional (simulado)
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!nome || !email) {
+        alert('Por favor, preencha nome e e-mail corretamente.');
+        return;
+      }
+
+      document.getElementById('msgSucesso').classList.remove('hidden');
+      e.target.reset();
+    });
+
+    // Botão "Começar Agora"
+    document.getElementById('btnComecar').addEventListener('click', () => {
+      alert('🚀 Bem-vindo ao Produto X! Seu teste gratuito começa agora.');
+    });
+  </script>
 </body>
 </html>
